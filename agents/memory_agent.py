@@ -1,10 +1,13 @@
 from utils.config import AquaState
 from utils.helpers import load_memory
-
+from utils.logger import logger
 
 def memory_trend_agent(state: AquaState):
 
     print("Memory & Trend Agent Running...")
+    logger.info(
+    f"Memory Agent completed | Trend={state['trend']}"
+)
 
     history = load_memory()
 

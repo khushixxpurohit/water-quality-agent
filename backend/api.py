@@ -72,7 +72,11 @@ def analyze(data: WaterInspection):
 
         "stop_execution": False,
 
-        "reason": ""
+        "reason": "",
+
+        "alert": {},
+        
+        "emergency_level": "",
 
     }
 

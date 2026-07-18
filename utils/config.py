@@ -35,3 +35,6 @@ class AquaState(TypedDict):
     next_agent: str
     stop_execution: bool
     reason: str
+
+    alert: dict
+    emergency_level: str

@@ -14,15 +14,15 @@ state: AquaState = {
 
     "timestamp": str(datetime.now()),
 
-    "flood_status": "Post-Flood",
+    "flood_status": "Flood",
 
     "flood_event_id": "WB-2026-001",
 
-    "ph": 7.1,
+    "ph": 4.5,
 
-    "tds": 180,
+    "tds": 900,
 
-    "turbidity": 2,
+    "turbidity": 12,
 
     "valid": False,
 
@@ -50,7 +50,11 @@ state: AquaState = {
 
     "stop_execution": False,
 
-    "reason": ""
+    "reason": "",
+
+    "alert": {},
+    
+    "emergency_level": "",
 
 }
 

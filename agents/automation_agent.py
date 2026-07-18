@@ -2,11 +2,12 @@ import os
 import pandas as pd
 
 from utils.helpers import save_memory
-
+from utils.logger import logger
 
 def automation_agent(state):
 
     print("\n===== Automation Agent =====")
+    logger.info("Automation Agent started.")
 
     # -------------------------
     # Save to memory
@@ -67,6 +68,8 @@ def automation_agent(state):
     if state["risk"] == "High":
 
         print("🚨 Emergency Alert Triggered")
+        logger.error(
+    f"Emergency Alert | Village={state['village']} | Source={state['water_source']}")
 
     else:
 
@@ -113,5 +116,6 @@ Recommendation
         f.write(report)
 
     print("✓ Report Generated.")
+    logger.info("Automation completed successfully.")
 
     return state

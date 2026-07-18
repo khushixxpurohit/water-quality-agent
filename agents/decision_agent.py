@@ -1,8 +1,9 @@
 from utils.config import AquaState
-
+from utils.logger import logger
 def decision_agent(state: AquaState):
 
     print("Decision Agent Running...")
+    
 
     # Default
     state["stop_execution"] = False
@@ -29,5 +30,6 @@ def decision_agent(state: AquaState):
     else:
         state["next_agent"] = "save"
         state["reason"] = "Water is safe."
-
+    logger.info(
+    f"Decision Agent -> Next Agent: {state['next_agent']}")
     return state

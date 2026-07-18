@@ -1,10 +1,9 @@
 from utils.config import AquaState
-
+from utils.logger import logger
 
 def analysis_agent(state: AquaState):
 
     print("Analysis Agent Running...")
-
     score = 0
 
     # -------------------------
@@ -45,5 +44,7 @@ def analysis_agent(state: AquaState):
     else:
         state["classification"] = "Unsafe"
         state["risk"] = "High"
-
+    logger.info(
+    f"Analysis complete | Classification={state['classification']} | Risk={state['risk']}"
+)
     return state

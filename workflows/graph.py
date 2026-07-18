@@ -10,11 +10,13 @@ from agents.supervisor_agent import supervisor_agent
 from agents.memory_agent import memory_trend_agent
 from agents.response_agent import response_planning_agent
 from agents.automation_agent import automation_agent
+from agents.escalation_agent import escalation_agent
 
 
 builder = StateGraph(AquaState)
 
 builder.add_node("automation", automation_agent)
+builder.add_node("escalation", escalation_agent)
 builder.add_node("monitoring", monitoring_agent)
 
 builder.add_node("validation", validation_agent)
@@ -51,9 +53,12 @@ builder.add_conditional_edges(
     supervisor_router,
     {
         "memory": "memory",
+        "automation": "automation",
+        "escalation": "escalation",
         END: END
     }
 )
+builder.add_edge("escalation", "response")
 builder.add_edge("memory", "response")
 
 builder.add_edge("response", "automation")
