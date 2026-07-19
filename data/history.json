@@ -430,5 +430,29 @@
         "turbidity": 3.5,
         "classification": "Needs Treatment",
         "risk": "Medium"
+    },
+    {
+        "timestamp": "2026-07-19 19:43:45.365109",
+        "village": "Ramur",
+        "water_source": "Hand Pump",
+        "flood_status": "Post-Flood",
+        "flood_event_id": "WB-2026-001",
+        "ph": 7.2,
+        "tds": 480,
+        "turbidity": 3.5,
+        "classification": "Needs Treatment",
+        "risk": "Medium"
+    },
+    {
+        "timestamp": "2026-07-19 20:18:01.581034",
+        "village": "Ramur",
+        "water_source": "Hand Pump",
+        "flood_status": "Post-Flood",
+        "flood_event_id": "WB-2026-001",
+        "ph": 6.5,
+        "tds": 630,
+        "turbidity": 6.0,
+        "classification": "Needs Treatment",
+        "risk": "Medium"
     }
 ]

@@ -166,5 +166,33 @@
         "priority": "Medium",
         "trend": "No historical trend available.",
         "recommendation": "Implement immediate household-level water filtration and disinfection, alongside community-led flood preparedness measures to secure drinking water sources."
+    },
+    {
+        "village": "Ramur",
+        "water_source": "Hand Pump",
+        "flood_status": "Post-Flood",
+        "event_id": "WB-2026-001",
+        "ph": 7.2,
+        "tds": 480,
+        "turbidity": 3.5,
+        "classification": "Needs Treatment",
+        "risk": "Medium",
+        "priority": "High",
+        "trend": "Water quality is fluctuating with no clear trend.",
+        "recommendation": "Disinfect the hand pump source immediately, distribute household-level water treatment solutions, and establish a community-led monitoring routine until water quality parameters stabilize."
+    },
+    {
+        "village": "Ramur",
+        "water_source": "Hand Pump",
+        "flood_status": "Post-Flood",
+        "event_id": "WB-2026-001",
+        "ph": 6.5,
+        "tds": 630,
+        "turbidity": 6.0,
+        "classification": "Needs Treatment",
+        "risk": "Medium",
+        "priority": "High",
+        "trend": "Water quality is fluctuating with no clear trend.",
+        "recommendation": "Execute immediate shock chlorination of the hand pump, distribute household-level water treatment solutions to manage turbidity and pathogens, and rehabilitate the wellhead to prevent future contamination."
     }
 ]
