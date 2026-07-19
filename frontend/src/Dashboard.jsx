@@ -3,9 +3,12 @@ import axios from "axios";
 import "./Dashboard.css";
 import ClassificationPieChart from "./components/ClassificationPieChart";
 import HistoryTable from "./components/HistoryTable";
+import Navbar from "./components/Navbar";
 import {
     LineChart,
     Line,
+    BarChart,
+    Bar,
     XAxis,
     YAxis,
     Tooltip,
@@ -73,6 +76,20 @@ function Dashboard() {
     }
 
 };
+const sourceData = Object.values(
+    history.reduce((acc, item) => {
+        if (!acc[item.water_source]) {
+            acc[item.water_source] = {
+                source: item.water_source,
+                count: 0,
+            };
+        }
+
+        acc[item.water_source].count++;
+
+        return acc;
+    }, {})
+);
 const trendData = history.map((item, index) => ({
 
     inspection: index + 1,
@@ -88,7 +105,8 @@ const trendData = history.map((item, index) => ({
 const now = new Date();
 
     return (
-
+        <>
+            <Navbar/>
         <div className="dashboard-page">
 
             <div className="dashboard-eyebrow">
@@ -190,18 +208,93 @@ const now = new Date();
 
                 </div>
                 <ClassificationPieChart analytics={analytics} />
+                <div className="chart-card">
+
+    <h2>Water Source Distribution</h2>
+    <p className="chart-subtitle">
+        Number of inspections conducted for each water source
+    </p>
+
+    <ResponsiveContainer width="100%" height={320}>
+
+        <BarChart
+            layout="vertical"
+            data={sourceData}
+            margin={{
+                top: 20,
+                right: 40,
+                left: 20,
+                bottom: 10
+            }}
+        >
+
+            <defs>
+                <linearGradient id="waterGradient" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#2dd4bf"/>
+                    <stop offset="100%" stopColor="#3b82f6"/>
+                </linearGradient>
+            </defs>
+
+            <CartesianGrid
+                strokeDasharray="4 4"
+                stroke="rgba(255,255,255,0.08)"
+                horizontal={false}
+            />
+
+            <XAxis
+                type="number"
+                axisLine={false}
+                tickLine={false}
+            />
+
+            <YAxis
+                type="category"
+                dataKey="source"
+                axisLine={false}
+                tickLine={false}
+                width={90}
+            />
+
+            <Tooltip
+                cursor={{ fill: "rgba(86,214,224,0.08)" }}
+                contentStyle={{
+                    background: "#071316",
+                    border: "1px solid #56d6e0",
+                    borderRadius: "10px"
+                }}
+            />
+
+            <Bar
+                dataKey="count"
+                fill="url(#waterGradient)"
+                radius={[0,8,8,0]}
+                barSize={22}
+                label={{
+                    position: "right",
+                    fill: "#ffffff"
+                }}
+            />
+
+        </BarChart>
+
+    </ResponsiveContainer>
+
+</div>
+
+
                 <div className="history-table-wrap">
                     <h2>Inspection Log</h2>
                     <p className="chart-subtitle">Most recent field readings, newest last</p>
                     <HistoryTable history={history} />
                 </div>
+                
             </>
                 
 
             )}
 
         </div>
-
+        </>
     );
 
 }
