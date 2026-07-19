@@ -40,7 +40,7 @@ function Dashboard() {
         try {
 
             const response = await axios.get(
-                "http://127.0.0.1:8000/analytics"
+                "https://water-quality-agent.onrender.com/analytics"
             );
 
             setAnalytics(response.data);
@@ -59,7 +59,7 @@ function Dashboard() {
     try {
 
         const response = await axios.get(
-            "http://127.0.0.1:8000/history"
+            "https://water-quality-agent.onrender.com/history"
         );
 
         setHistory(response.data);
