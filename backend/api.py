@@ -3,7 +3,7 @@ from datetime import datetime
 from fastapi import FastAPI
 
 from backend.schemas import WaterInspection
-
+from utils.history import load_history
 from workflows.graph import graph
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -79,7 +79,61 @@ def analyze(data: WaterInspection):
         "emergency_level": "",
 
     }
+    
 
     result = graph.invoke(state)
 
     return result
+
+@app.get("/history")
+def get_history():
+
+    return load_history()
+
+
+@app.get("/analytics")
+def analytics():
+
+    history = load_history()
+
+    total = len(history)
+
+    safe = sum(
+        1 for h in history
+        if h["classification"] == "Safe"
+    )
+
+    treatment = sum(
+        1 for h in history
+        if h["classification"] == "Needs Treatment"
+    )
+
+    unsafe = sum(
+        1 for h in history
+        if h["classification"] == "Unsafe"
+    )
+
+    high = sum(
+        1 for h in history
+        if h["risk"] == "High"
+    )
+
+    medium = sum(
+        1 for h in history
+        if h["risk"] == "Medium"
+    )
+
+    low = sum(
+        1 for h in history
+        if h["risk"] == "Low"
+    )
+
+    return {
+        "total_inspections": total,
+        "safe": safe,
+        "needs_treatment": treatment,
+        "unsafe": unsafe,
+        "high_risk": high,
+        "medium_risk": medium,
+        "low_risk": low
+    }

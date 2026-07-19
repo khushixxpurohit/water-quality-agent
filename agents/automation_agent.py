@@ -1,9 +1,9 @@
 import os
 import pandas as pd
-
+from utils.history import add_inspection
 from utils.helpers import save_memory
 from utils.logger import logger
-
+from services.email_service import send_email_alert
 def automation_agent(state):
 
     print("\n===== Automation Agent =====")
@@ -68,6 +68,7 @@ def automation_agent(state):
     if state["risk"] == "High":
 
         print("🚨 Emergency Alert Triggered")
+        send_email_alert(state)
         logger.error(
     f"Emergency Alert | Village={state['village']} | Source={state['water_source']}")
 
@@ -117,5 +118,8 @@ Recommendation
 
     print("✓ Report Generated.")
     logger.info("Automation completed successfully.")
+    add_inspection(state)
+
+    print("✓ Inspection added to history.")
 
     return state

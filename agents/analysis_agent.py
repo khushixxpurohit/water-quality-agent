@@ -25,9 +25,9 @@ def analysis_agent(state: AquaState):
     # -------------------------
     # Turbidity Analysis
     # -------------------------
-    if state["turbidity"] > 5:
+    if state["turbidity"] > 10:
         score += 2
-    elif state["turbidity"] > 1:
+    elif state["turbidity"] > 5:
         score += 1
 
     # -------------------------
