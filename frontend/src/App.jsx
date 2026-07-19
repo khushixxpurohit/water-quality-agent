@@ -154,7 +154,7 @@ function App() {
 
       const response = await axios.post(
 
-        "http://127.0.0.1:8000/analyze",
+        "https://water-quality-agent.onrender.com/analyze",
 
         {
 
